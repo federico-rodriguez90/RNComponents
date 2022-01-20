@@ -5,12 +5,12 @@ export const useFade = () => {
   const opacity = useRef(new Animated.Value(0)).current;
   const position = useRef(new Animated.Value(0)).current;
 
-  const fadeIn = (callback?: Function) => {
+  const fadeIn = (duration: number = 300) => {
     Animated.timing(opacity, {
       toValue: 1,
-      duration: 300,
+      duration,
       useNativeDriver: true,
-    }).start(() => (callback ? callback() : null));
+    }).start();
   };
   const fadeOut = (duration: number = 300) => {
     Animated.timing(opacity, {
